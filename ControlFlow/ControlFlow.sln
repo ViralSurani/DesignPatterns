@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModTest", "ModTest\ModTest.csproj", "{CF4DEDAC-A2C1-4D44-8C58-6798D655D402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlFlowDemo", "Understanding Control Flow\ControlFlowDemo\ControlFlowDemo.csproj", "{64038FD0-7BA2-4BDB-A665-49753EF7E218}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF4DEDAC-A2C1-4D44-8C58-6798D655D402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4DEDAC-A2C1-4D44-8C58-6798D655D402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4DEDAC-A2C1-4D44-8C58-6798D655D402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4DEDAC-A2C1-4D44-8C58-6798D655D402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64038FD0-7BA2-4BDB-A665-49753EF7E218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64038FD0-7BA2-4BDB-A665-49753EF7E218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64038FD0-7BA2-4BDB-A665-49753EF7E218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64038FD0-7BA2-4BDB-A665-49753EF7E218}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
