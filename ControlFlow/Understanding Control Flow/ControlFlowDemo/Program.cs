@@ -32,19 +32,19 @@ namespace ControlFlowDemo
             return result;
         }
 
-        private static decimal GetItemPrice(string itemName, decimal relativeDiscount = 0)
+        private static decimal GetItemPrice(string itemName, decimal relativeDiscount)
         {
-            if (relativeDiscount < 0 || relativeDiscount >= 1)
+            if (relativeDiscount <= 0 || relativeDiscount >= 1)
             {
                 throw new ArgumentException("Incorrect discount", "relativeDiscount");
             }
+            Console.WriteLine("LOG Discount {0}% applied", 100 * relativeDiscount);
+            return GetItemPrice(itemName) * (1.0M - relativeDiscount);
+        }
 
-            if (relativeDiscount > 0)
-            {
-                Console.WriteLine("LOG Discount {0}% applied", 100 * relativeDiscount);
-            }
-
-            return 100.0M * itemName.Length * (1.0M - relativeDiscount);
+        private static decimal GetItemPrice(string itemName)
+        {
+            return 100.0M * itemName.Length;
         }
     }
 }
