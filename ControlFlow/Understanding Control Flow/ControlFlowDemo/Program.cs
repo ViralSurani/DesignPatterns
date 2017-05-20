@@ -12,23 +12,17 @@ namespace ControlFlowDemo
 
         static int CalculateControlDigit(int number)
         {
-            int sum = 0;
-            int pos = 1;
+            int sum = 0;            
+            int factor = 3;
 
             do
             {
                 int digit = number % 10;
 
-                int value;
-                if (pos % 2 == 0)
-                    value = digit * 3;
-                else
-                    value = digit;
+                sum = sum + (digit*factor);
+                factor = 4 - factor;
 
-                sum = sum + value;
-
-                number = number / 10;
-                pos = pos + 1;
+                number = number / 10;                
             } while (number > 0);
 
             int result = sum % 11;
