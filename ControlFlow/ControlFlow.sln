@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModTest", "ModTest\ModTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlFlowDemo", "Understanding Control Flow\ControlFlowDemo\ControlFlowDemo.csproj", "{64038FD0-7BA2-4BDB-A665-49753EF7E218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullReferenceDemo", "Coping with Null References\NullReferenceDemo\NullReferenceDemo.csproj", "{596DFBA2-D24A-41A5-9FFF-195F6CD4E4E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{64038FD0-7BA2-4BDB-A665-49753EF7E218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64038FD0-7BA2-4BDB-A665-49753EF7E218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64038FD0-7BA2-4BDB-A665-49753EF7E218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596DFBA2-D24A-41A5-9FFF-195F6CD4E4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596DFBA2-D24A-41A5-9FFF-195F6CD4E4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596DFBA2-D24A-41A5-9FFF-195F6CD4E4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596DFBA2-D24A-41A5-9FFF-195F6CD4E4E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
