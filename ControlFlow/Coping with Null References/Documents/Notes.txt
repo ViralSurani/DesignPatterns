@@ -1,0 +1,31 @@
+--------------------------------------------------------
+Coping with Null References - Refactoring to Patterns
+--------------------------------------------------------
+Identifying the Design Problem
+There were many if-then-else statements in code
+- These were guarding from null references returned from methods
+Information is lost in negative cases
+- Null reference carries no information about what went wrong
+
+---------------------------------------------------------------
+Coping with Null References - Refactoring to Design Patterns
+----------------------------------------------------------------
+Fresh design is typically driven by requirements
+When implementation emerges, we start noticing design issues
+- Too much branching on nulls
+- Missing information when null was returned
+Then we start refactoring to mitigate the issues
+- Null Object pattern will eliminate branching on null references
+- Special Case pattern will let us carry additional information in specific cases
+- Option<T> functional type and mapreduce pattern
+
+---------------------------------------------------------------
+Coping with Null References - Summary
+----------------------------------------------------------------
+Two major ways of introducing null references
+- When passing an object into a method
+- When returning an object from a method
+Consequences
+- Small gain from not investing into design
+- Control flow becomes complicated
+Alternative is to provide proper objects instead of null references
