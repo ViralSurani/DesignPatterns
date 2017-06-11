@@ -13,7 +13,7 @@ namespace NullReferencesDemoApplication.Application.Interfaces
         bool IsRegistered(string username);
         void Deposit(string username, decimal amount);
         decimal GetBalance(string username);
-        Receipt Purchase(string username, string itemName);
+        IPurchaseReport Purchase(string username, string itemName);
         IEnumerable<StockItem> GetAvaliableItems();
     }
 }

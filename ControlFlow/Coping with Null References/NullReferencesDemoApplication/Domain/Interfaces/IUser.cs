@@ -13,6 +13,6 @@ namespace NullReferencesDemoApplication.Domain.Interfaces
         decimal Balance { get; }
 
         void Deposit(decimal amount);
-        Receipt Purchase(IProduct product);
+        IPurchaseReport Purchase(IProduct product);
     }
 }

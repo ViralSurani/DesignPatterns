@@ -1,0 +1,116 @@
+
+var creative = {};
+
+/**
+ * Window onload handler.
+ */
+function preInit() {
+  setupDom();
+
+  if (Enabler.isInitialized()) {
+    init();
+  } else {
+    Enabler.addEventListener(
+      studio.events.StudioEvent.INIT,
+      init
+    );
+  }
+}
+
+/**
+ * Initializes the ad components
+ */
+function setupDom() {
+  creative.dom = {};
+  creative.dom.mainContainer = document.getElementById('mainContainer');
+  creative.dom.exit = document.getElementById('exit');
+  creative.dom.replay = document.getElementById('replay-btn');
+  creative.dom.feature = document.getElementById('featureContainer');
+}
+
+/**
+ * Ad initialisation.
+ */
+function init() {
+
+  addListeners();
+
+  // Polite loading
+  if (Enabler.isVisible()) {
+    startAd();
+  }
+  else {
+    Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, startAd);
+  }
+}
+/*!
+ * start the ad
+ **/
+function startAd()
+{
+	var loading = document.getElementById("loading");
+	//var content = document.getElementById("content");
+	
+	loading.parentNode.removeChild(loading);
+	creative.dom.exit.style.display = "block";
+  	creative.dom.feature.style.visibility  = 'visible';
+	
+	show();
+}
+/**
+ * Adds appropriate listeners at initialization time
+ */
+function addListeners() {
+  creative.dom.exit.addEventListener('click', exitClickHandler);
+}
+
+/**
+ *  Shows the ad.
+ */
+function show() {
+  creative.dom.exit.style.display = "block";
+  creative.dom.feature.style.visibility  = 'visible';
+
+  var freeDigitalText = document.getElementById("freeDigitalText");
+  var logo = document.getElementById("logo");
+
+
+  tl = new TimelineLite();
+
+  //tl.set(freeDigitalText, { rotation:179, opacity:0 });
+  tl.to(freeDigitalText, 0.02 , { opacity:1, ease:Quad.easeIn} )
+  tl.to(logo, 0.02, { opacity:1, ease:Quad.easeIn },"-=0.02" )
+  //hide1 show2
+  tl.to(freeDigitalText, 0.02, { opacity:0, ease:Quad.easeIn },"+=1" )
+  tl.to([chooseWhatText, laptop, displayText], 0.02, { opacity:1, ease:Quad.easeIn },"+=.2" )
+  
+  tl.to([laptop, displayText], 0.02, { opacity:0, ease:Quad.easeIn },"+=1" )
+  tl.to([mobile, mobileText], 0.02, { opacity:1, ease:Quad.easeIn },"+=0" )
+  
+  tl.to([mobile, mobileText], 0.02, { opacity:0, ease:Quad.easeIn },"+=1" )
+  tl.to([social, socialText], 0.02, { opacity:1, ease:Quad.easeIn },"+=0" )
+  //hide frame2 show3
+  tl.to([social, socialText, chooseWhatText, logo], 0.02, { opacity:0, ease:Quad.easeIn },"+=1" )
+  tl.to([growYourText, cta, fromText, digitalBlock, logo2], 0.04, { opacity:1, ease:Quad.easeIn },"+=0" )
+  
+
+}
+
+// ---------------------------------------------------------------------------------
+// MAIN
+// ---------------------------------------------------------------------------------
+
+function exitClickHandler() {
+  Enabler.exit('BackgroundExit');
+  tl.progress(1, false);
+}
+
+function replayHandler(e) {
+    tl.pause(0, true);
+    show();
+}
+
+/**
+ *  Main onload handler
+ */
+window.addEventListener('load', preInit);

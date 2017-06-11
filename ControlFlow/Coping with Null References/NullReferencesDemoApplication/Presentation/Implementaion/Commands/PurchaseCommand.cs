@@ -23,14 +23,9 @@ namespace NullReferencesDemoApplication.Presentation.Implementaion.Commands
             Console.Write("Enter item name: ");
             string itemName = Console.ReadLine();
 
-            Receipt receipt = _applicationServices.Purchase(itemName);
+            IPurchaseReport report = _applicationServices.Purchase(itemName);
 
-            if (receipt == null)
-                Console.WriteLine("Purchase failed.");
-            else
-            {
-                DisplayReceipt(receipt);
-            }
+            DisplayReceipt(report);
         }
 
         private void ShowStock()
@@ -44,9 +39,9 @@ namespace NullReferencesDemoApplication.Presentation.Implementaion.Commands
             Console.WriteLine();
         }
 
-        private void DisplayReceipt(Receipt receipt)
-        {
-            Console.WriteLine("Thank you for buying {0} for {1:C}.", receipt.ItemName, receipt.Price);
+        private void DisplayReceipt(IPurchaseReport report)
+        {            
+            Console.WriteLine(report.ToUiText());
         }
     }
 }

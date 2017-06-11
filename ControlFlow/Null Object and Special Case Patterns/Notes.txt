@@ -1,0 +1,7 @@
+Null object design pattern
+Special case design pattern
+Singleton design pattern
+Abstract Factory design pattern
+Dependency Inversion Principle for layered application
+
+Please refer "NullReferencesDemoApplication" project for example

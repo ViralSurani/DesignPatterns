@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NullReferencesDemoApplication.Domain.Interfaces;
 using NullReferencesDemoApplication.Presentation.Interfaces;
+using NullReferencesDemoApplication.Presentation.PurchaseReports;
 
 namespace NullReferencesDemoApplication.Domain.Implementation
 {
@@ -12,11 +13,13 @@ namespace NullReferencesDemoApplication.Domain.Implementation
     {
         public string Username { get; private set; }
         private IAccount _account;
+        private IPurchaseReportFactory _purchaseReportFactory;
 
-        public User(string username,IAccount account)
+        public User(string username, IAccount account, IPurchaseReportFactory purchaseReportFactory)
         {
             Username = username;
             _account = account;
+            _purchaseReportFactory = purchaseReportFactory;
         }
 
         public decimal Balance
@@ -29,12 +32,12 @@ namespace NullReferencesDemoApplication.Domain.Implementation
             _account.Deposit(amount);
         }
 
-        public Presentation.Interfaces.Receipt Purchase(IProduct product)
+        public Presentation.Interfaces.IPurchaseReport Purchase(IProduct product)
         {
             MoneyTransaction transaction = _account.Withdraw(product.Price);
             if (transaction == null)
-                return null;
-            return new Receipt(product.Name, product.Price);
+                return _purchaseReportFactory.CreateNotEnoughMoney(Username, product.Name, product.Price);
+            return new Receipt(Username, product.Name, product.Price);
         }
     }
 }

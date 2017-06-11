@@ -5,17 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using NullReferencesDemoApplication.Presentation.Interfaces;
 using NullReferencesDemoApplication.Application.Interfaces;
+using NullReferencesDemoApplication.Presentation.PurchaseReports;
 
 namespace NullReferencesDemoApplication.Application.Implementation
 {
     class ApplicationServices : IApplicationServices
     {
         private readonly IDomainServices _domainService;
+        private IPurchaseReportFactory _purchaseReportFactory;
         private string _loggedInUsername;
 
-        public ApplicationServices(IDomainServices domainService)
+        public ApplicationServices(IDomainServices domainService, IPurchaseReportFactory purchaseReportFactory)
         {
             _domainService = domainService;
+            _purchaseReportFactory = purchaseReportFactory;
             _loggedInUsername = string.Empty;
         }
 
@@ -73,10 +76,10 @@ namespace NullReferencesDemoApplication.Application.Implementation
             return _domainService.GetAvaliableItems();
         }
 
-        public Receipt Purchase(string itemName)
+        public IPurchaseReport Purchase(string itemName)
         {
             if (!IsUserLoggedIn)
-                return null;
+                return _purchaseReportFactory.CreateNotSignedIn();
             return _domainService.Purchase(_loggedInUsername, itemName);
         }
 

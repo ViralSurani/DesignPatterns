@@ -7,6 +7,8 @@ using NullReferencesDemoApplication.Application.Implementation;
 using NullReferencesDemoApplication.Domain.Implementation;
 using NullReferencesDemoApplication.Infrastructure.Implementation;
 using NullReferencesDemoApplication.Presentation.Implementaion;
+using NullReferencesDemoApplication.Presentation.Interfaces;
+using NullReferencesDemoApplication.Presentation.PurchaseReports;
 
 namespace NullReferencesDemoApplication
 {
@@ -14,12 +16,16 @@ namespace NullReferencesDemoApplication
     {
         static void Main(string[] args)
         {
+            IPurchaseReportFactory purchaseReportFactory = new PurchaseReportFactory();
+
             UserInterface ui =
                new UserInterface(
                    new ApplicationServices(
                        new DomainServices(
                            new UserRepository(),
-                           new ProductRepository())));
+                           new ProductRepository(),
+                           purchaseReportFactory),
+                           purchaseReportFactory));
 
             while (ui.ReadCommand())
             {
